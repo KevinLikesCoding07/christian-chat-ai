@@ -11,7 +11,7 @@ def load_ai_model():
 
 return pipeline("text-generation", model="microsoft/Phi-3-mini-4k-instruct", torch_dtype="auto", device_map="auto")
 
-generator = load_ai_model()
+  generator = load_ai_model()
 
 if "messages" not in st.session_state:
 st.session_session.messages = [
