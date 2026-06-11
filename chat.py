@@ -4,7 +4,7 @@ import torch
 
 st.title("Welcome to ChristianChat.AI")
 st.image("https://static.vecteezy.com/system/resources/previews/027/819/697/large_2x/open-bible-with-sunlights-free-photo.jpg")
-st.markdown(---)
+st.markdown("---")
 
 @st.cache_resource
 def load_ai_model():
