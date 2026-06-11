@@ -15,7 +15,7 @@ generator = load_ai_model()
 
 if "messages" not in st.session_state:
 st.session_session.messages = [
-{role": "assistant", "content": "Hello! Blessings to you. How can I support, encourage, or pray for you today?"}
+{"role": "assistant", "content": "Hello! Blessings to you. How can I support, encourage, or pray for you today?"}
 ]
 for message in st.session_state.messages:
 with st.chat_message(message["role"]):
