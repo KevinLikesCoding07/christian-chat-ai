@@ -31,8 +31,8 @@ if user_input := st.chat_input("How can I help or pray for you today my brother/
 full_prompt = f"System: {system_instruction}\nUser: {user_input}\nAssistant:"
 with st.chat_message("assistant"):
   with st.spinner("Analyzing...."):
-  outputs = generator(full_prompt, max_new_tokens=150, do_sample=True, temperature=0.7)
-  bot_response = outputs[0]['generated_text'].split("Assistant:")[-1].strip()
-  st.markdown(bot_response)
-  
-  st.session_state.messages.append({"role": "assistant", "content": bot_response})
+    outputs = generator(full_prompt, max_new_tokens=150, do_sample=True, temperature=0.7)
+    bot_response = outputs[0]['generated_text'].split("Assistant:")[-1].strip()
+    st.markdown(bot_response)
+    
+    st.session_state.messages.append({"role": "assistant", "content": bot_response})
