@@ -1,4 +1,5 @@
+groq
 streamlit
 transformers
-torch
-accelerate
+torch 
+streamlit-mic-recorder
