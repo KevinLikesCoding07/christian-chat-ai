@@ -3,3 +3,5 @@ streamlit
 transformers
 torch 
 streamlit-mic-recorder
+gtts
+langdetect
