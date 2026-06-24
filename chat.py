@@ -254,11 +254,12 @@ st.markdown('</div>', unsafe_allow_html=True)
     
           
 
-for idx, msg in enumerate(st.session_state.messages):        
-    if msg["role"] == "assistant":                
-        if msg.get("audio") is not None:                        
-            st.audio(msg["audio"], format="audio/mp3")                
-        elif idx == len(st.session_state.messages) - 1:                        
+if st.session_state.messages:
+    last_msg = st.session_state.messages[-1]
+    if last_msg["role"] == "assistant":
+        if last_msg.get("audio") is not None:                        
+            st.audio(last_msg["audio"], format="audio/mp3")                
+        else:                        
             st.caption("🔊 Audio clip generation paused due to safe rate limits.")
 
 st.markdown("---")
@@ -306,8 +307,9 @@ elif audio is not None:
                 with open("temp_audio.wav", "rb") as audio_file:                                        
                     transcription = client.audio.transcriptions.create(                                                
                         model="whisper-large-v3",                                                 
-                        file=audio_file                                        
-                    )                                
+                        file=audio_file,
+                        prompt = "Transcribe the language it is spoken in, do not translate it to english."
+                )                                
                 active_prompt = transcription.text                                
                 st.success(f"🗣️ Heard: \"{active_prompt}\"")                                
                 os.remove("temp_audio.wav")                        
@@ -369,5 +371,3 @@ if active_prompt is not None:
             st.rerun()                            
         except Exception as e:                        
             st.error(f"API Error: {e}")
-
-   
